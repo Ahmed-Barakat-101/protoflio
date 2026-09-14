@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ahmed Barakat | Contact</title>
+
+  <style>
+    /* ======================
+       Global Styles & Reset
+    ====================== */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    /* ======================
+       Navbar
+    ====================== */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background-color: #0a0a0a;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #222;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .logo span {
+      color: #e31c25;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav-links a {
+      color: #e0e0e0;
+      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #e31c25;
+    }
+
+    /* Hamburger */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 28px;
+      height: 20px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      z-index: 1001;
+    }
+
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: #ffffff;
+      border-radius: 3px;
+      transition: all 0.3s ease;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: translateY(8.5px) rotate(45deg);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: translateY(-8.5px) rotate(-45deg);
+    }
+
+    /* ======================
+       Section Title
+    ====================== */
+    .section-title {
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: #ffffff;
+      margin-bottom: 24px;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: "";
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background-color: #e31c25;
+    }
+
+    /* ======================
+       Contact Section
+    ====================== */
+    .contact {
+      padding: 120px 0 140px;
+      background-color: #0a0a0a;
+      text-align: center;
+    }
+
+    .contact-text {
+      font-size: 1.15rem;
+      color: #a0a0a0;
+      max-width: 580px;
+      margin: 0 auto 60px;
+      line-height: 1.7;
+    }
+
+    .contact-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 30px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .contact-card {
+      background-color: #141414;
+      border: 1px solid #222;
+      border-radius: 16px;
+      padding: 40px 28px;
+      transition: all 0.35s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-10px);
+      border-color: #e31c25;
+      box-shadow: 0 20px 40px rgba(227, 28, 37, 0.15);
+    }
+
+    .contact-icon {
+      width: 68px;
+      height: 68px;
+      background-color: #1f1f1f;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e31c25;
+      margin-bottom: 6px;
+      transition: all 0.35s ease;
+    }
+
+    .contact-card:hover .contact-icon {
+      background-color: #e31c25;
+      color: #ffffff;
+      transform: scale(1.1);
+    }
+
+    .contact-card h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .contact-card p {
+      font-size: 0.95rem;
+      color: #999;
+      word-break: break-all;
+      transition: color 0.3s ease;
+    }
+
+    .contact-card:hover p {
+      color: #e0e0e0;
+    }
+
+    /* ======================
+       Responsive
+    ====================== */
+    @media (max-width: 768px) {
+      nav {
+        padding: 16px 24px;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-links {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        max-width: 300px;
+        height: 100vh;
+        background-color: #141414;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        transition: right 0.4s ease;
+        border-left: 1px solid #222;
+        z-index: 999;
+      }
+
+      .nav-links.active {
+        right: 0;
+      }
+
+      .nav-links a {
+        font-size: 1.3rem;
+      }
+
+      .container {
+        padding: 0 24px;
+      }
+
+      .section-title {
+        font-size: 2.2rem;
+      }
+
+      .contact {
+        padding: 90px 0 100px;
+      }
+
+      .contact-text {
+        font-size: 1.05rem;
+        margin-bottom: 45px;
+      }
+
+      .contact-cards {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav>
+    <a href="/index.html" class="logo">Ahmed Barakat<span>.</span></a>
+
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="sec2.html">Projects</a></li>
+      <li><a href="sec1.html">Skills</a></li>
+      <li><a href="sec3.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2 class="section-title">Get In Touch</h2>
+
+      <p class="contact-text">
+        I'm currently open to new opportunities and collaborations.<br>
+        Feel free to reach out through any of the channels below.
+      </p>
+
+      <div class="contact-cards">
+
+        <!-- Email -->
+        <a href="mailto:ahmed444asae@gmail.com" class="contact-card">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="16" x="2" y="4" rx="2"/>
+              <path d="m22 7-8.99 5.74a2 2 0 0 1-2.02 0L2 7"/>
+            </svg>
+          </div>
+          <h3>Email</h3>
+          <p>ahmed444asae@gmail.com</p>
+        </a>
+
+        <!-- WhatsApp -->
+        <a href="https://wa.me/201033137357" target="_blank" class="contact-card">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9L3 21"/>
+              <path d="M9 10a.5.5 0 0 0 1 0V9a.5.5 0 0 0-1 0v1Z"/>
+              <path d="M9 10a5 5 0 0 0 5 5"/>
+            </svg>
+          </div>
+          <h3>WhatsApp</h3>
+          <p>+20 103 313 7357</p>
+        </a>
+
+        <!-- GitHub -->
+        <a href="https://github.com/Ahmed-Barakat-101" target="_blank" class="contact-card">
+          <div class="contact-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+              <path d="M9 18c-4.51 2-5-2-7-2"/>
+            </svg>
+          </div>
+          <h3>GitHub</h3>
+          <p>@Ahmed-Barakat-101</p>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        navLinks.classList.remove('active');
+      });
+    });
+  </script>
+
+</body>
+</html>
